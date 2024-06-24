@@ -10,36 +10,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.systeme_de_gestion_de_ticket.modele.Apprenant;
-import com.api.systeme_de_gestion_de_ticket.service.ApprenantService;
+
+import com.api.systeme_de_gestion_de_ticket.modele.Formateur;
+
+import com.api.systeme_de_gestion_de_ticket.service.FormateurService;
 
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/apprenants")
+@RequestMapping("/formateur")
 @AllArgsConstructor
-public class ApprenantController {
-
-    private final ApprenantService apprenantService;
+public class formateurController {
+    private final FormateurService formateurService;
 
     @PostMapping("/creer")
-    public Apprenant create(@RequestBody Apprenant apprenant){
-        return apprenantService.creer(apprenant);
+    public Formateur create(@RequestBody Formateur formateur){
+        return formateurService.creer(formateur);
     }
 
     
     @GetMapping("/afficher")
-    public List<Apprenant> afficher(){
-        return apprenantService.afficher();
+    public List<Formateur> afficher(){
+        return formateurService.afficher();
     }
 
     @PutMapping("/modifier/{id}")
-    public Apprenant modifier(@PathVariable Long id, @RequestBody Apprenant apprenant){
-        return apprenantService.modifier(id, apprenant);
+    public Formateur modifier(@PathVariable Long id, @RequestBody Formateur formateur){
+        return formateurService.modifier(id, formateur);
     }
 
     @DeleteMapping("/supprimer")
     public String supprimer(@PathVariable Long id){
-        return apprenantService.supprimer(id);
+        return formateurService.supprimer(id);
     }
 }

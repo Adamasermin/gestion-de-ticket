@@ -22,5 +22,7 @@ public class Formateur{
     private String prenom;
     private String email;
     private Integer numero;
+    private String password;
     private String expertise;
+    private String role = "FORMATEUR";
 }

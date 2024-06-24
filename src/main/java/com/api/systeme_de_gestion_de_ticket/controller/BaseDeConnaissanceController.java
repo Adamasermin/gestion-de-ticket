@@ -1,6 +1,8 @@
 package com.api.systeme_de_gestion_de_ticket.controller;
 
 import java.util.List;
+
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,37 +11,35 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.api.systeme_de_gestion_de_ticket.modele.Apprenant;
-import com.api.systeme_de_gestion_de_ticket.service.ApprenantService;
+import com.api.systeme_de_gestion_de_ticket.modele.BaseDeConnaissance;
+import com.api.systeme_de_gestion_de_ticket.service.BaseDeConnaissanceService;
 
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/apprenants")
+@RequestMapping("/faq")
 @AllArgsConstructor
-public class ApprenantController {
-
-    private final ApprenantService apprenantService;
+public class BaseDeConnaissanceController {
+    
+    private final BaseDeConnaissanceService baseDeConnaissanceService;
 
     @PostMapping("/creer")
-    public Apprenant create(@RequestBody Apprenant apprenant){
-        return apprenantService.creer(apprenant);
+    public BaseDeConnaissance create(@RequestBody BaseDeConnaissance baseDeConnaissance){
+        return baseDeConnaissanceService.creer(baseDeConnaissance);
     }
 
-    
     @GetMapping("/afficher")
-    public List<Apprenant> afficher(){
-        return apprenantService.afficher();
+    public List<BaseDeConnaissance> afficher(){
+        return baseDeConnaissanceService.afficher();
     }
 
     @PutMapping("/modifier/{id}")
-    public Apprenant modifier(@PathVariable Long id, @RequestBody Apprenant apprenant){
-        return apprenantService.modifier(id, apprenant);
+    public BaseDeConnaissance modifier(@PathVariable Long id, @RequestBody BaseDeConnaissance baseDeConnaissance){
+        return baseDeConnaissanceService.modifier(id, baseDeConnaissance);
     }
 
     @DeleteMapping("/supprimer")
     public String supprimer(@PathVariable Long id){
-        return apprenantService.supprimer(id);
+        return baseDeConnaissanceService.supprimer(id);
     }
 }

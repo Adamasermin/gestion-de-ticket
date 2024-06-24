@@ -22,4 +22,6 @@ public class Administrateur{
     private String prenom;
     private String email;
     private Integer numero;
+    private String password;
+    private String role = "ADMIN";
 }

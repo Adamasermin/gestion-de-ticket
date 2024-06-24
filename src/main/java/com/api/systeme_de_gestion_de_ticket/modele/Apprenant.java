@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,9 @@ public class Apprenant{
     private String prenom;
     private String email;
     private Integer numero;
+    private String password;
     private Integer niveauCompetence;
+    private String role = "APPRENANT";
 
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)

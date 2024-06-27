@@ -30,14 +30,13 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // Utilisation correcte de la désactivation de CSRF
             .authorizeHttpRequests(authorizeRequests -> {
-                authorizeRequests.requestMatchers("/admin/**", "/formateur/**").permitAll();
+    
                 authorizeRequests.requestMatchers("/apprenants/creer").hasRole("ADMIN");
-                authorizeRequests.requestMatchers("/apprenants/**").permitAll();
                 authorizeRequests.requestMatchers("/faq/afficher").hasRole("APPRENANT");
                 authorizeRequests.requestMatchers("/faq/**").hasRole("FORMATEUR");
-                authorizeRequests.requestMatchers("/ticket/repondre").hasRole("FORMATEUR");
+                authorizeRequests.requestMatchers("/ticket/{id}/repondre").hasRole("FORMATEUR");
                 authorizeRequests.requestMatchers("/ticket/**").hasRole("APPRENANT");
-                authorizeRequests.anyRequest().authenticated();
+                authorizeRequests.anyRequest().permitAll();
             })
             .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
             .httpBasic(withDefaults()); // Utilisation correcte de withDefaults
